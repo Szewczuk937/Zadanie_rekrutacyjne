@@ -36,6 +36,7 @@ namespace WindowsFormsApp1
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Welcome = new System.Windows.Forms.Label();
             this.Loading = new System.Windows.Forms.Label();
+            this.btnSaveDB = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,12 +114,23 @@ namespace WindowsFormsApp1
             this.Loading.Text = "Loading";
             this.Loading.Visible = false;
             // 
+            // btnSaveDB
+            // 
+            this.btnSaveDB.Location = new System.Drawing.Point(714, 139);
+            this.btnSaveDB.Name = "btnSaveDB";
+            this.btnSaveDB.Size = new System.Drawing.Size(146, 23);
+            this.btnSaveDB.TabIndex = 8;
+            this.btnSaveDB.Text = "Zapisz do BD";
+            this.btnSaveDB.UseVisualStyleBackColor = true;
+            this.btnSaveDB.Click += new System.EventHandler(this.btnSaveDB_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(872, 450);
+            this.Controls.Add(this.btnSaveDB);
             this.Controls.Add(this.Loading);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnClearDB);
@@ -146,6 +158,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label Welcome;
         private System.Windows.Forms.Label Loading;
+        private System.Windows.Forms.Button btnSaveDB;
     }
 }
 

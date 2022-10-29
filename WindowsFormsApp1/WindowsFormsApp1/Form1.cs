@@ -11,6 +11,7 @@ using System.IO;
 using System.Collections;
 using MySql.Data.MySqlClient;
 using System.Threading;
+using CsvHelper;
 
 namespace WindowsFormsApp1
 {
@@ -156,7 +157,8 @@ namespace WindowsFormsApp1
                          }
                         db.closeConnection();
                         progressBar1.Visible = false;
-                        Loading.Visible = true;
+                        Loading.Visible = false;
+                        dataGridView1.Visible = true;
 
                     }
                 }
@@ -196,6 +198,7 @@ namespace WindowsFormsApp1
             db.cleardate();
             Welcome.Visible = true;
             dataGridView1.Visible = false;
+            progressBar1.Visible = false;
             Welcome.Text = "Clear";
         }
 
@@ -212,6 +215,25 @@ namespace WindowsFormsApp1
         private void Welcome_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSaveDB_Click(object sender, EventArgs e)
+        {
+            using(SaveFileDialog sfd=new SaveFileDialog() { Filter="CSV|*.csv", ValidateNames=true})
+            {
+                if(sfd.ShowDialog()==DialogResult.OK)
+                {
+                    using(var sw = new StreamWriter(sfd.FileName))
+                    {
+                        var writer = new CsvWriter(sw);
+                        writer.WriteHeader(typeof(Student));
+                        foreach(Student s in studentBindingSource.DataSource as List<Student>)
+                        {
+                            writer.WritRecord(s);
+                        }
+                    }
+                }
+            }
         }
     }
 }
