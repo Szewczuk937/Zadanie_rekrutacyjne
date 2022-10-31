@@ -37,6 +37,7 @@ namespace WindowsFormsApp1
             this.Welcome = new System.Windows.Forms.Label();
             this.Loading = new System.Windows.Forms.Label();
             this.btnSaveDB = new System.Windows.Forms.Button();
+            this.btnSort = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,12 +125,23 @@ namespace WindowsFormsApp1
             this.btnSaveDB.UseVisualStyleBackColor = true;
             this.btnSaveDB.Click += new System.EventHandler(this.btnSaveDB_Click);
             // 
+            // btnSort
+            // 
+            this.btnSort.Location = new System.Drawing.Point(714, 169);
+            this.btnSort.Name = "btnSort";
+            this.btnSort.Size = new System.Drawing.Size(146, 23);
+            this.btnSort.TabIndex = 9;
+            this.btnSort.Text = "Sortuj baze ";
+            this.btnSort.UseVisualStyleBackColor = true;
+            this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(872, 450);
+            this.Controls.Add(this.btnSort);
             this.Controls.Add(this.btnSaveDB);
             this.Controls.Add(this.Loading);
             this.Controls.Add(this.progressBar1);
@@ -159,6 +171,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label Welcome;
         private System.Windows.Forms.Label Loading;
         private System.Windows.Forms.Button btnSaveDB;
+        private System.Windows.Forms.Button btnSort;
     }
 }
 

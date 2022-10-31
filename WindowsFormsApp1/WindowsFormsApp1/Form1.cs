@@ -33,16 +33,16 @@ namespace WindowsFormsApp1
          
         public DataTable ReadCsvFile(string file)
             {
-                
-                progressBar1.Visible = true;
                 Loading.Visible = true;
+                progressBar1.Visible = true;
+                Welcome.Visible = false;
 
-                DataTable dt = new DataTable();
-                using (StreamReader streamReader = new StreamReader(file))
+                DataTable dtrd = new DataTable();
+                using (StreamReader streamReaderr = new StreamReader(file))
                 {
-                    while (!streamReader.EndOfStream)
+                    while (!streamReaderr.EndOfStream)
                     {
-                        string text = streamReader.ReadToEnd();
+                        string text = streamReaderr.ReadToEnd();
 
                         string[] rows = text.Split('\n');
                         if (rows.Length > 0)
@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
                             string[] columns = rows[0].Split(';');
                             for (int j = 0; j < columns.Count(); j++)
                             {
-                                dt.Columns.Add(columns[j]);
+                                dtrd.Columns.Add(columns[j]);
 
                             }
 
@@ -62,12 +62,12 @@ namespace WindowsFormsApp1
                             {
 
                                 string[] data = rows[i].Split(';');
-                                DataRow dr = dt.NewRow();
+                                DataRow dr = dtrd.NewRow();
                                 for (int k = 0; k < data.Count(); k++)
 
                                     dr[k] = data[k];
 
-                                dt.Rows.Add(dr);
+                                dtrd.Rows.Add(dr);
 
                                 progressBar1.Value++;
 
@@ -91,13 +91,13 @@ namespace WindowsFormsApp1
                             }
                             db.closeConnection();
                             progressBar1.Visible = false;
-                            Loading.Visible = false;
+                           // Loading.Visible = false;
                             dataGridView1.Visible = true;
                         }
                     }
                 
                 }
-                return dt;        
+                return dtrd;        
             }///Wczyt pierwszej tabeli 
         public DataTable ReadCsvFileItem(string file)
         {
@@ -166,9 +166,16 @@ namespace WindowsFormsApp1
              return dti;
          }///Wczyt drugiej tabeli Items
 
+        public void SortBase(string file)
+        {
+            DataTable dTable = ReadCsvFile(file);
+            string ddsff=" ";
+            string ddsf=ReadCsvFile(file).Columns.Count.ToString(ddsff);
+
+
+        }
         private void btnRead_Click(object sender, EventArgs e)
         {
-            Welcome.Visible = false;
           using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "Document|*.csv" })
           {
                  if (ofd.ShowDialog() == DialogResult.OK)
@@ -197,9 +204,9 @@ namespace WindowsFormsApp1
                     dataGridView1.Rows.Remove(dataGridView1.Rows[i]);
             db.cleardate();
             Welcome.Visible = true;
+            Welcome.Text = "Clear";
             dataGridView1.Visible = false;
             progressBar1.Visible = false;
-            Welcome.Text = "Clear";
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -217,23 +224,29 @@ namespace WindowsFormsApp1
 
         }
 
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            SortBase(null);
+        }
+
         private void btnSaveDB_Click(object sender, EventArgs e)
         {
-            using(SaveFileDialog sfd=new SaveFileDialog() { Filter="CSV|*.csv", ValidateNames=true})
-            {
-                if(sfd.ShowDialog()==DialogResult.OK)
-                {
-                    using(var sw = new StreamWriter(sfd.FileName))
-                    {
-                        var writer = new CsvWriter(sw);
-                        writer.WriteHeader(typeof(Student));
-                        foreach(Student s in studentBindingSource.DataSource as List<Student>)
-                        {
-                            writer.WritRecord(s);
-                        }
-                    }
-                }
-            }
+            /* using(SaveFileDialog sfd=new SaveFileDialog() { Filter="CSV|*.csv", ValidateNames=true})
+             {
+                 if(sfd.ShowDialog()==DialogResult.OK)
+                 {
+                     using(var sw = new StreamWriter(sfd.FileName))
+                     {
+                         var writer = new CsvWriter(sw);
+                         writer.WriteHeader(typeof(Student));
+                         foreach(Student s in studentBindingSource.DataSource as List<Student>)
+                         {
+                             writer.WritRecord(s);
+                         }
+                     }
+                 }
+             }*/
         }
+
     }
 }
