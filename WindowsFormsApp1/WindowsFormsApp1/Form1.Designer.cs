@@ -35,9 +35,9 @@ namespace WindowsFormsApp1
             this.btnClearDB = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.Welcome = new System.Windows.Forms.Label();
-            this.Loading = new System.Windows.Forms.Label();
             this.btnSaveDB = new System.Windows.Forms.Button();
             this.btnSort = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1
             this.btnClearDB.Name = "btnClearDB";
             this.btnClearDB.Size = new System.Drawing.Size(146, 23);
             this.btnClearDB.TabIndex = 4;
-            this.btnClearDB.Text = "Wyczyść DB";
+            this.btnClearDB.Text = "Wyczyść BD";
             this.btnClearDB.UseVisualStyleBackColor = true;
             this.btnClearDB.Click += new System.EventHandler(this.btnClearDB_Click);
             // 
@@ -104,17 +104,6 @@ namespace WindowsFormsApp1
             this.Welcome.Visible = false;
             this.Welcome.Click += new System.EventHandler(this.Welcome_Click);
             // 
-            // Loading
-            // 
-            this.Loading.AutoSize = true;
-            this.Loading.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Loading.Location = new System.Drawing.Point(310, 241);
-            this.Loading.Name = "Loading";
-            this.Loading.Size = new System.Drawing.Size(85, 24);
-            this.Loading.TabIndex = 7;
-            this.Loading.Text = "Loading";
-            this.Loading.Visible = false;
-            // 
             // btnSaveDB
             // 
             this.btnSaveDB.Location = new System.Drawing.Point(714, 139);
@@ -135,21 +124,30 @@ namespace WindowsFormsApp1
             this.btnSort.UseVisualStyleBackColor = true;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(305, 222);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(0, 13);
+            this.linkLabel1.TabIndex = 10;
+            this.linkLabel1.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(872, 450);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.Welcome);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.btnSaveDB);
-            this.Controls.Add(this.Loading);
-            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.btnClearDB);
             this.Controls.Add(this.btnReadIt);
             this.Controls.Add(this.btnRead);
-            this.Controls.Add(this.Welcome);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.progressBar1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
@@ -169,9 +167,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button btnClearDB;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Label Welcome;
-        private System.Windows.Forms.Label Loading;
         private System.Windows.Forms.Button btnSaveDB;
         private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
